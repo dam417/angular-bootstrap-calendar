@@ -84,6 +84,10 @@ angular
     };
 
     vm.getClickedDate = function(baseDate, minutes, days) {
+      var date = new Date(baseDate);
+      if(date.getMinutes()!==minutes){
+        minutes = date.getMinutes();
+      }
       return moment(baseDate).clone().startOf('hour').add(minutes, 'minutes').add(days || 0, 'days').toDate();
     };
 
